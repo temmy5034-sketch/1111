@@ -8,7 +8,7 @@
   <title>L'Heure Dorée｜金色時光・台南法式餐廳</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -40,9 +40,154 @@
         color: #49372F;
         font-family: 'Noto Sans TC', sans-serif;
         overflow-x: hidden;
-        background-image: radial-gradient(#A68B6C 0.4px, transparent 0.4px), radial-gradient(#A68B6C 0.4px, #F4EFE6 0.4px);
-        background-size: 16px 16px;
-        background-position: 0 0, 8px 8px;
+        background-image: 
+            radial-gradient(#A68B6C 0.5px, transparent 0.5px), 
+            radial-gradient(#A68B6C 0.5px, #F4EFE6 0.5px),
+            url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 C32 15 45 28 55 30 C45 32 32 45 30 55 C28 45 15 32 5 30 C15 28 28 15 30 5 Z' fill='%23A68B6C' fill-opacity='0.035'/%3E%3C/svg%3E");
+        background-size: 16px 16px, 16px 16px, 120px 120px;
+        background-position: 0 0, 8px 8px, 0 0;
+    }
+
+    /* French Golden Sparkles Decorative Ornaments */
+    .bg-ornament {
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.18;
+    }
+    .fleur-de-lis {
+        width: 140px;
+        height: 140px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%23A68B6C'%3E%3Cpath d='M50 5 C55 25 70 35 70 50 C70 65 55 75 50 95 C45 75 30 65 30 50 C30 35 45 25 50 5 Z M20 45 C35 45 45 55 45 70 C30 70 20 60 20 45 Z M80 45 C65 45 55 55 55 70 C70 70 80 60 80 45 Z'/%3E%3C/svg%3E");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    h1, h2, h3, h4, .font-serif-title {
+        font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
+    }
+    .font-cursive {
+        font-family: 'Alex Brush', cursive;
+    }
+
+    /* Paper Texture Effect */
+    .paper-texture {
+        background-color: #F2ECE1;
+        background-image: 
+            radial-gradient(#d3c6b0 0.75px, transparent 0.75px), 
+            radial-gradient(#d3c6b0 0.75px, #F2ECE1 0.75px),
+            url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23A68B6C' fill-opacity='0.04'%3E%3Ccircle cx='40' cy='40' r='18' stroke='%23A68B6C' stroke-width='1' fill='none'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: 12px 12px, 12px 12px, 80px 80px;
+        background-position: 0 0, 6px 6px, 0 0;
+        box-shadow: inset 0 0 80px rgba(166, 139, 108, 0.15);
+        position: relative;
+    }
+
+    /* Interactive Draggable Floating Speech Bubble Cards with Collision & Bounce */
+    .speech-bubble {
+        position: absolute;
+        cursor: grab;
+        user-select: none;
+        touch-action: none;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+        will-change: transform, top, left, opacity;
+    }
+    
+    /* Cloud Bubble Shape & Soft Pastel Colors */
+    .cloud-shape {
+        border-radius: 40px 40px 35px 35px;
+        position: relative;
+        box-shadow: 0 12px 28px rgba(73, 55, 47, 0.12);
+        border: 1.5px solid rgba(166, 139, 108, 0.3);
+    }
+    .cloud-shape::before {
+        content: '';
+        position: absolute;
+        top: -18px;
+        left: 30px;
+        width: 50px;
+        height: 50px;
+        background: inherit;
+        border-radius: 50%;
+        border-top: 1.5px solid rgba(166, 139, 108, 0.3);
+        border-left: 1.5px solid rgba(166, 139, 108, 0.2);
+        z-index: -1;
+    }
+    .cloud-shape::after {
+        content: '';
+        position: absolute;
+        top: -28px;
+        right: 40px;
+        width: 65px;
+        height: 65px;
+        background: inherit;
+        border-radius: 50%;
+        border-top: 1.5px solid rgba(166, 139, 108, 0.3);
+        border-right: 1.5px solid rgba(166, 139, 108, 0.2);
+        z-index: -1;
+    }
+
+    /* Falling Drop & Bounce Animation */
+    .cloud-bubble-drop {
+        opacity: 0;
+        transform: translateY(-220px) scale(0.7) rotate(-8deg);
+    }
+    .cloud-bubble-drop.dropped {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(var(--base-rot, 0deg));
+        transition: transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+    }
+    
+    .speech-bubble:hover {
+        transform: scale(1.06) translateY(-4px) rotate(calc(var(--base-rot, 0deg) + 2deg)) !important;
+        box-shadow: 0 18px 35px rgba(166, 139, 108, 0.35) !important;
+        border-color: rgba(166, 139, 108, 0.9) !important;
+        z-index: 30;
+    }
+
+    .speech-bubble.collision-bounce {
+        animation: bubbleCollide 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) !important;
+    }
+    
+    .speech-bubble.is-dragging {
+        transition: none !important;
+        cursor: grabbing;
+        transform: scale(1.08) rotate(2deg) !important;
+        z-index: 40 !important;
+        box-shadow: 0 25px 40px rgba(73, 55, 47, 0.35) !important;
+        border-color: rgba(166, 139, 108, 0.95) !important;
+    }
+
+    @keyframes bubbleCollide {
+        0% { transform: scale(1); }
+        30% { transform: scale(0.92) rotate(-3deg); }
+        60% { transform: scale(1.1) rotate(3deg); }
+        100% { transform: scale(1) rotate(0deg); }
+    }
+
+    /* Idle Mouse Scroll Cue Widget */
+    #idle-scroll-cue {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 50;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #idle-scroll-cue.show-idle {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+    }
+    .scroll-pulse-ring {
+        animation: pulseRing 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+    }
+    @keyframes pulseRing {
+        0% { transform: scale(0.95); opacity: 0.8; }
+        50% { transform: scale(1.15); opacity: 0.3; }
+        100% { transform: scale(0.95); opacity: 0.8; }
     }
     h1, h2, h3, h4, .font-serif-title {
         font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
@@ -64,11 +209,11 @@
         content: "";
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
         pointer-events: none;
     }
 
-    /* Frosted Glass Effect */
+    /* Glass Effect */
     .glass-card {
         background: rgba(244, 239, 230, 0.85);
         backdrop-filter: blur(12px);
@@ -76,7 +221,6 @@
         border: 1px solid rgba(166, 139, 108, 0.25);
     }
 
-    /* Scalloped Decorative Banner Border */
     .decorative-divider {
         background-color: #D9C8B2;
         background-image: radial-gradient(circle at 10px 0, transparent 8px, #D9C8B2 9px);
@@ -84,19 +228,44 @@
         background-repeat: repeat-x;
     }
 
-    /* Draggable Speech Bubble Cards */
+    /* Kinetic Text Scroll Animation Classes */
+    .kinetic-title .char {
+        display: inline-block;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+        will-change: transform, opacity;
+    }
+    .kinetic-title.out-view .char {
+        opacity: 0;
+        transform: translateY(35px) rotate(6deg) scale(0.9);
+    }
+    .kinetic-title.in-view .char {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+
+    /* Draggable Floating Speech Bubble Cards */
     .speech-bubble {
         position: absolute;
         cursor: grab;
         user-select: none;
         touch-action: none;
-        transition: box-shadow 0.2s;
+        transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        animation: floatBubble 6s ease-in-out infinite alternate;
     }
-    .speech-bubble:active {
+    
+    .speech-bubble.is-dragging {
+        animation-play-state: paused !important;
         cursor: grabbing;
-        transform: scale(1.03) rotate(1deg) !important;
-        z-index: 30 !important;
-        box-shadow: 0 20px 30px rgba(73, 55, 47, 0.25) !important;
+        transform: scale(1.04) rotate(1deg) !important;
+        z-index: 40 !important;
+        box-shadow: 0 20px 35px rgba(73, 55, 47, 0.3) !important;
+        border-color: rgba(166, 139, 108, 0.8) !important;
+    }
+
+    @keyframes floatBubble {
+        0% { transform: translateY(0px) rotate(var(--base-rot, 0deg)); }
+        50% { transform: translateY(-12px) rotate(calc(var(--base-rot, 0deg) + 1.5deg)); }
+        100% { transform: translateY(6px) rotate(calc(var(--base-rot, 0deg) - 1.5deg)); }
     }
 
     /* Smooth Fade In Scroll Animations */
@@ -110,6 +279,69 @@
         transform: translateY(0);
     }
 
+    /* Menu Card Smooth Stagger Animation */
+    .menu-card-item {
+        opacity: 0;
+        transform: scale(0.92) translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        will-change: transform, opacity;
+    }
+    .menu-card-item.show {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    /* Modal Container */
+    #dish-modal-container {
+        transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, top 0.45s cubic-bezier(0.16, 1, 0.3, 1), left 0.45s cubic-bezier(0.16, 1, 0.3, 1), width 0.45s cubic-bezier(0.16, 1, 0.3, 1), height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, top, left, width, height, opacity;
+    }
+
+    /* Horizontal Parallax Pinning Wrapper */
+    .horizontal-scroll-container {
+        position: relative;
+        height: 350vh; /* Control vertical length for pinning duration */
+    }
+    .sticky-wrapper {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+    .horizontal-track {
+        display: flex;
+        gap: 4vw;
+        padding: 0 8vw;
+        will-change: transform;
+        transition: transform 0.1s linear;
+    }
+    .parallax-card {
+        flex: 0 0 75vw;
+        max-width: 900px;
+        height: 70vh;
+        position: relative;
+        overflow: hidden;
+        border-radius: 2rem;
+        box-shadow: 0 20px 40px rgba(73, 55, 47, 0.18);
+        border: 1px solid rgba(166, 139, 108, 0.3);
+    }
+    @media (min-width: 768px) {
+        .parallax-card {
+            flex: 0 0 60vw;
+        }
+    }
+    .parallax-img {
+        position: absolute;
+        inset: -10% -15%;
+        width: 130%;
+        height: 120%;
+        object-cover: cover;
+        will-change: transform;
+        transition: transform 0.1s linear;
+    }
+
     @media (prefers-reduced-motion: reduce) {
         *, ::before, ::after {
             animation-duration: 0.01ms !important;
@@ -117,10 +349,11 @@
             transition-duration: 0.01ms !important;
             scroll-behavior: auto !important;
         }
-        .fade-in-up {
+        .fade-in-up, .kinetic-title .char {
             opacity: 1 !important;
             transform: none !important;
         }
+        .speech-bubble { animation: none !important; }
     }
 
     ::-webkit-scrollbar { width: 8px; }
@@ -138,6 +371,22 @@
 <!-- Toast Container -->
 <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
+<!-- Idle Scroll Hint Cue (Floating Badge) -->
+<div id="idle-scroll-cue" class="flex items-center gap-3 bg-cream/90 backdrop-blur-md px-5 py-3 rounded-full border border-gold/40 shadow-2xl cursor-pointer" onclick="scrollDownToNext()">
+    <div class="relative w-8 h-8 flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full border-2 border-gold scroll-pulse-ring"></div>
+        <i class="fa-solid fa-chevron-down text-gold text-xs animate-bounce"></i>
+    </div>
+    <div class="text-left">
+        <span class="block text-[10px] font-bold text-gold uppercase tracking-widest font-serif-title">Scroll Down</span>
+        <span class="block text-xs text-espresso font-medium">向下滾動探索精彩內容</span>
+    </div>
+</div>
+
+<!-- Background French Ornaments -->
+<div class="bg-ornament fleur-de-lis top-40 left-10 hidden lg:block"></div>
+<div class="bg-ornament fleur-de-lis top-[1400px] right-10 hidden lg:block rotate-45"></div>
+
 <!-- Navigation Bar -->
 <nav id="navbar" class="fixed top-8 left-0 w-full z-40 transition-all duration-300 py-3 px-6 md:px-12 bg-cream/90 backdrop-blur-md border-b border-gold/20 shadow-sm">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -150,6 +399,7 @@
         <div class="hidden md:flex items-center space-x-8 text-sm tracking-wider uppercase font-medium">
             <a href="#home" id="nav-home" onclick="handleNavClick(event, 'home')" class="nav-link text-espresso hover:text-gold transition-colors py-1 relative">首頁</a>
             <a href="#about" id="nav-about" onclick="handleNavClick(event, 'about')" class="nav-link text-espresso hover:text-gold transition-colors py-1 relative">品牌理念</a>
+            <a href="#story-horizontal" id="nav-story" onclick="handleNavClick(event, 'story-horizontal')" class="nav-link text-espresso hover:text-gold transition-colors py-1 relative">橫式故事藝廊</a>
             <a href="#menu" id="nav-menu" onclick="handleNavClick(event, 'menu')" class="nav-link text-espresso hover:text-gold transition-colors py-1 relative">菜單介紹</a>
             <a href="#gallery" id="nav-gallery" onclick="handleNavClick(event, 'gallery')" class="nav-link text-espresso hover:text-gold transition-colors py-1 relative">光影藝廊</a>
             <a href="#info" id="nav-info" onclick="handleNavClick(event, 'info')" class="nav-link text-espresso hover:text-gold transition-colors py-1 relative">營業資訊</a>
@@ -171,6 +421,7 @@
     <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-cream/95 backdrop-blur-lg border-b border-gold/20 shadow-xl py-6 px-8 flex flex-col space-y-4 text-center">
         <a href="#home" onclick="handleNavClick(event, 'home')" class="text-espresso hover:text-gold py-2 uppercase tracking-wider border-b border-gold/10">首頁 Home</a>
         <a href="#about" onclick="handleNavClick(event, 'about')" class="text-espresso hover:text-gold py-2 uppercase tracking-wider border-b border-gold/10">品牌理念 About</a>
+        <a href="#story-horizontal" onclick="handleNavClick(event, 'story-horizontal')" class="text-espresso hover:text-gold py-2 uppercase tracking-wider border-b border-gold/10">橫向藝廊 Story</a>
         <a href="#menu" onclick="handleNavClick(event, 'menu')" class="text-espresso hover:text-gold py-2 uppercase tracking-wider border-b border-gold/10">菜單介紹 Menu</a>
         <a href="#gallery" onclick="handleNavClick(event, 'gallery')" class="text-espresso hover:text-gold py-2 uppercase tracking-wider border-b border-gold/10">光影藝廊 Gallery</a>
         <a href="#info" onclick="handleNavClick(event, 'info')" class="text-espresso hover:text-gold py-2 uppercase tracking-wider border-b border-gold/10">營業資訊 Information</a>
@@ -193,7 +444,7 @@
     <div class="relative z-10 text-center text-cream px-4 max-w-4xl mx-auto fade-in-up">
         <span class="inline-block text-gold uppercase tracking-[0.3em] text-xs md:text-sm mb-2 font-semibold border-b border-gold/50 pb-1">Tainan, Taiwan</span>
         <p class="font-cursive text-3xl sm:text-5xl text-champagne mb-1">Soft living, Beautifully Served</p>
-        <h1 class="text-4xl sm:text-6xl md:text-8xl font-serif-title italic mb-3 tracking-wide font-normal leading-tight">
+        <h1 class="text-4xl sm:text-6xl md:text-8xl font-serif-title italic mb-3 tracking-wide font-normal leading-tight kinetic-title" data-split-text="L'Heure Dorée">
             L'Heure Dorée
         </h1>
         <p class="text-xs md:text-base font-light text-cream/80 max-w-xl mx-auto mb-10 tracking-wider">
@@ -228,9 +479,11 @@
 
 <!-- ABOUT SECTION -->
 <section id="about" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-    <div class="text-center max-w-2xl mx-auto mb-16 fade-in-up">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
         <p class="font-cursive text-3xl md:text-4xl text-gold mb-1">Where cozy corners meet French culinary art</p>
-        <h2 class="text-3xl md:text-5xl font-serif-title text-espresso">日光與光影交織的黃金時刻</h2>
+        <h2 class="text-3xl md:text-5xl font-serif-title text-espresso kinetic-title" data-split-text="日光與光影交織的黃金時刻">
+            日光與光影交織的黃金時刻
+        </h2>
         <div class="w-16 h-[1px] bg-gold mx-auto mt-4"></div>
     </div>
 
@@ -274,13 +527,86 @@
     </div>
 </section>
 
+<!-- HORIZONTAL PARALLAX SCROLL SECTION -->
+<section id="story-horizontal" class="horizontal-scroll-container">
+    <div class="sticky-wrapper">
+        <div class="absolute top-8 left-8 md:left-16 z-20">
+            <span class="text-gold text-xs uppercase tracking-[0.25em] font-semibold block">Interactive Experience</span>
+            <h2 class="text-2xl md:text-4xl font-serif-title text-espresso kinetic-title" data-split-text="品牌橫式視差藝廊">
+                品牌橫式視差藝廊
+            </h2>
+            <p class="text-xs text-espresso/60 mt-1">向下滾動可橫向導覽章節，體驗背景圖層動態視差位移</p>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="absolute bottom-8 left-8 md:left-16 z-20 flex items-center gap-3">
+            <span id="h-scroll-num" class="text-xs font-serif-title font-bold text-espresso">01 / 04</span>
+            <div class="w-32 h-1 bg-gold/20 rounded-full overflow-hidden">
+                <div id="h-scroll-bar" class="h-full bg-gold w-1/4 transition-all duration-200"></div>
+            </div>
+        </div>
+
+        <div id="horizontal-track" class="horizontal-track">
+            <!-- Card 1 -->
+            <div class="parallax-card">
+                <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=1200&auto=format&fit=crop" class="parallax-img" alt="Sunlight Dining">
+                <div class="absolute inset-0 bg-gradient-to-t from-espresso/90 via-espresso/40 to-transparent p-8 md:p-12 flex flex-col justify-end text-cream">
+                    <span class="text-gold text-xs tracking-widest uppercase font-bold mb-2">CHAPTER I</span>
+                    <h3 class="text-2xl md:text-5xl font-serif-title font-bold mb-3">陽光下的法式美學</h3>
+                    <p class="text-xs md:text-sm font-light text-cream/90 max-w-lg leading-relaxed">
+                        我們將台南充足溫暖的晴朗日光，引導至每一張潔白的亞麻餐桌上，將法式愜意生活融入古都步調。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="parallax-card">
+                <img src="https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1200&auto=format&fit=crop" class="parallax-img" alt="Culinary Art">
+                <div class="absolute inset-0 bg-gradient-to-t from-espresso/90 via-espresso/40 to-transparent p-8 md:p-12 flex flex-col justify-end text-cream">
+                    <span class="text-gold text-xs tracking-widest uppercase font-bold mb-2">CHAPTER II</span>
+                    <h3 class="text-2xl md:text-5xl font-serif-title font-bold mb-3">當代烹調與在地食材</h3>
+                    <p class="text-xs md:text-sm font-light text-cream/90 max-w-lg leading-relaxed">
+                        主廚走訪在地農場嚴選有機蔬果與生鮮食材，透過正統法式醬汁工藝與現代低溫烹調，淬鍊出層次豐富的滋味。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="parallax-card">
+                <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=1200&auto=format&fit=crop" class="parallax-img" alt="Wine Pairings">
+                <div class="absolute inset-0 bg-gradient-to-t from-espresso/90 via-espresso/40 to-transparent p-8 md:p-12 flex flex-col justify-end text-cream">
+                    <span class="text-gold text-xs tracking-widest uppercase font-bold mb-2">CHAPTER III</span>
+                    <h3 class="text-2xl md:text-5xl font-serif-title font-bold mb-3">靈魂佐餐佳釀</h3>
+                    <p class="text-xs md:text-sm font-light text-cream/90 max-w-lg leading-relaxed">
+                        專業侍酒師精選來自法國波爾多、勃艮第及隆河產區的精品葡萄酒，為道道佳餚打造完美絕配口感。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="parallax-card">
+                <img src="https://images.unsplash.com/photo-1579372786545-d24232daf58c?q=80&w=1200&auto=format&fit=crop" class="parallax-img" alt="Dessert Artistry">
+                <div class="absolute inset-0 bg-gradient-to-t from-espresso/90 via-espresso/40 to-transparent p-8 md:p-12 flex flex-col justify-end text-cream">
+                    <span class="text-gold text-xs tracking-widest uppercase font-bold mb-2">CHAPTER IV</span>
+                    <h3 class="text-2xl md:text-5xl font-serif-title font-bold mb-3">黃金尾聲甜點</h3>
+                    <p class="text-xs md:text-sm font-light text-cream/90 max-w-lg leading-relaxed">
+                        甜點是這場黃金饗宴的精緻收尾。現烤舒芙蕾與精緻烤布蕾，帶來視覺與味的雙重享受。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- MENU SECTION (VINTAGE PAPER TEXTURE BACKGROUND) -->
 <section id="menu" class="py-24 paper-texture border-y border-gold/30 px-6 md:px-12 relative">
     <div class="max-w-7xl mx-auto relative z-10">
         <div class="text-center max-w-2xl mx-auto mb-12 fade-in-up">
             <p class="font-cursive text-4xl text-gold mb-1">Le Menu Gastronomique</p>
-            <h2 class="text-3xl md:text-5xl font-serif-title text-espresso">法式古典菜單</h2>
-            <p class="text-espresso/70 text-xs md:text-sm mt-2 font-light">嚴選在地優質食材結合經典法式烹飪工藝（註：價格與評價皆為展示示範資料）</p>
+            <h2 class="text-3xl md:text-5xl font-serif-title text-espresso kinetic-title" data-split-text="法式古典菜單">
+                法式古典菜單
+            </h2>
+            <p class="text-espresso/70 text-xs md:text-sm mt-2 font-light">點擊任何縮圖體驗流暢轉場展開細節（註：價格與評價皆為展示示範資料）</p>
         </div>
 
         <!-- Category Tabs -->
@@ -303,24 +629,26 @@
         </div>
 
         <!-- Menu Cards Grid -->
-        <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[400px]"></div>
 
-        <!-- DRAGGABLE BUBBLES REVIEWS SECTION -->
+        <!-- DRAGGABLE FLOATING BUBBLES REVIEWS SECTION -->
         <div class="mt-24 pt-16 border-t border-gold/30 fade-in-up">
             <div class="text-center mb-8">
                 <p class="font-cursive text-3xl text-gold mb-1">Guest Experiences & Love</p>
-                <h3 class="text-2xl md:text-4xl font-serif-title text-espresso">顧客對話氣泡與評價（支援滑鼠拖移！）</h3>
-                <p class="text-xs text-espresso/60 tracking-wider mt-2">嘗試用滑鼠或手指拖動評價氣泡，感受互動樂趣</p>
+                <h3 class="text-2xl md:text-4xl font-serif-title text-espresso kinetic-title" data-split-text="雲朵顧客評價（進入頁面掉落堆積 & 可任意拖移）">
+                    雲朵顧客評價（進入頁面掉落堆積 & 可任意拖移）
+                </h3>
+                <p class="text-xs text-espresso/60 tracking-wider mt-2">滑動進入此區域時，色彩雲朵將自上方自然掉落堆積！亦可自由按住拖移。</p>
             </div>
 
             <!-- Draggable Playground -->
-            <div id="draggable-bubble-playground" class="relative w-full h-[450px] bg-cream/40 rounded-3xl border border-dashed border-gold/40 p-6 overflow-hidden">
-                <!-- Javascript populated bubbles -->
+            <div id="draggable-bubble-playground" class="relative w-full h-[520px] bg-cream/40 rounded-3xl border border-dashed border-gold/40 p-6 overflow-hidden shadow-inner">
+                <!-- Javascript populated floating bubbles -->
             </div>
 
             <!-- Review Submission Form -->
             <form id="review-form" onsubmit="handleReviewSubmit(event)" class="max-w-2xl mx-auto bg-cream/90 backdrop-blur-sm p-6 md:p-8 rounded-3xl shadow-md border border-gold/30 mt-12">
-                <h4 class="text-xl font-serif-title text-espresso mb-4">發表您的用餐留言（新增為對話氣泡）</h4>
+                <h4 class="text-xl font-serif-title text-espresso mb-4">發表您的用餐留言（即時加入飄浮氣泡）</h4>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label class="block text-xs font-semibold text-espresso uppercase mb-1">您的尊姓大名 *</label>
@@ -340,7 +668,7 @@
                     <textarea id="review-comment" required rows="2" placeholder="請分享您對餐點、光影氣氛或服務的想法..." class="w-full px-4 py-2.5 text-sm bg-cream border border-gold/30 rounded-xl focus:outline-none focus:border-gold text-espresso"></textarea>
                 </div>
                 <button type="submit" class="w-full sm:w-auto px-8 py-3 bg-espresso text-cream hover:bg-gold transition-colors duration-300 rounded-full text-xs tracking-widest uppercase font-semibold shadow">
-                    送出評價氣泡
+                    送出氣泡留言
                 </button>
             </form>
         </div>
@@ -351,7 +679,9 @@
 <section id="gallery" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
     <div class="text-center max-w-2xl mx-auto mb-12 fade-in-up">
         <p class="font-cursive text-3xl text-gold mb-1">Handpicked moments with Intention</p>
-        <h2 class="text-3xl md:text-5xl font-serif-title text-espresso">光影寫真藝廊</h2>
+        <h2 class="text-3xl md:text-5xl font-serif-title text-espresso kinetic-title" data-split-text="光影寫真藝廊">
+            光影寫真藝廊
+        </h2>
         <p class="text-espresso/70 text-sm mt-2 font-light">捕捉日光與浪漫晚餐的交織瞬間</p>
     </div>
 
@@ -373,7 +703,9 @@
     <div class="max-w-4xl mx-auto glass-card rounded-3xl p-8 md:p-14 shadow-2xl border border-gold/30 relative z-10 fade-in-up">
         <div class="text-center mb-10">
             <p class="font-cursive text-4xl text-gold mb-1">Réservation en Ligne</p>
-            <h2 class="text-3xl md:text-4xl font-serif-title text-espresso">線上席位預約</h2>
+            <h2 class="text-3xl md:text-4xl font-serif-title text-espresso kinetic-title" data-split-text="線上席位預約">
+                線上席位預約
+            </h2>
             <p class="text-espresso/70 text-xs md:text-sm mt-2 font-light">為維護高品質用餐體驗，建議您提前預約席位。</p>
         </div>
 
@@ -466,7 +798,9 @@
         <div class="space-y-8 fade-in-up">
             <div>
                 <p class="font-cursive text-3xl text-gold mb-1">Informations & Contact</p>
-                <h2 class="text-3xl md:text-5xl font-serif-title text-espresso">營業與造訪資訊</h2>
+                <h2 class="text-3xl md:text-5xl font-serif-title text-espresso kinetic-title" data-split-text="營業與造訪資訊">
+                    營業與造訪資訊
+                </h2>
             </div>
 
             <div class="space-y-6 text-espresso/80 font-light">
@@ -516,6 +850,7 @@
             <h4 class="text-sm font-semibold text-champagne uppercase tracking-wider mb-4">Quick Links</h4>
             <ul class="space-y-2 text-xs">
                 <li><a href="#home" onclick="handleNavClick(event, 'home')" class="hover:text-gold">首頁 Home</a></li>
+                <li><a href="#story-horizontal" onclick="handleNavClick(event, 'story-horizontal')" class="hover:text-gold">橫向藝廊 Story</a></li>
                 <li><a href="#menu" onclick="handleNavClick(event, 'menu')" class="hover:text-gold">菜單 Menu</a></li>
             </ul>
         </div>
@@ -540,23 +875,31 @@
     </div>
 </footer>
 
-<!-- MODAL: DISH DETAIL -->
-<div id="dish-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="bg-cream rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl border border-gold/30 transform scale-95 transition-transform duration-300 relative">
-        <button onclick="closeDishModal()" aria-label="Close Modal" class="absolute top-4 right-4 z-10 w-8 h-8 bg-cream/80 text-espresso rounded-full flex items-center justify-center hover:bg-gold hover:text-cream transition-colors">
-            <i class="fa-solid fa-xmark"></i>
+<!-- MODAL OVERLAY & FLIP EXPANDING CONTAINER FOR DISH DETAILS -->
+<div id="dish-modal-overlay" class="fixed inset-0 z-50 bg-espresso/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-400">
+    <div id="dish-modal-container" class="fixed z-50 bg-cream rounded-3xl overflow-hidden shadow-2xl border border-gold/30 opacity-0 pointer-events-none flex flex-col md:flex-row">
+        <button onclick="closeDishModal()" aria-label="Close Modal" class="absolute top-4 right-4 z-20 w-9 h-9 bg-cream/80 text-espresso rounded-full flex items-center justify-center hover:bg-gold hover:text-cream transition-colors shadow">
+            <i class="fa-solid fa-xmark text-lg"></i>
         </button>
-        <div class="h-64 overflow-hidden relative">
-            <img id="modal-dish-img" src="" alt="" class="w-full h-full object-cover">
+        <div class="w-full md:w-1/2 h-56 md:h-auto overflow-hidden relative">
+            <img id="modal-dish-img" src="" alt="" class="w-full h-full object-cover transition-transform duration-700">
         </div>
-        <div class="p-6">
-            <span id="modal-dish-category" class="text-[10px] uppercase tracking-widest text-gold font-bold px-2 py-0.5 rounded bg-gold/10">Category</span>
-            <h3 id="modal-dish-zh" class="text-2xl font-serif-title text-espresso mt-2"></h3>
-            <p id="modal-dish-en" class="text-xs font-serif-title italic text-gold mb-3"></p>
-            <p id="modal-dish-desc" class="text-sm text-espresso/80 font-light mb-4 leading-relaxed"></p>
-            <div class="flex justify-between items-center border-t border-gold/20 pt-4">
-                <span id="modal-dish-price" class="text-xl font-serif-title text-espresso font-bold"></span>
-                <span id="modal-dish-rating" class="text-xs text-gold"></span>
+        <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between bg-cream/90 backdrop-blur-sm">
+            <div>
+                <span id="modal-dish-category" class="text-[10px] uppercase tracking-widest text-gold font-bold px-2.5 py-1 rounded bg-gold/15">Category</span>
+                <h3 id="modal-dish-zh" class="text-2xl md:text-3xl font-serif-title text-espresso mt-3 font-bold"></h3>
+                <p id="modal-dish-en" class="text-sm font-serif-title italic text-gold mb-4"></p>
+                <p id="modal-dish-desc" class="text-xs md:text-sm text-espresso/80 font-light mb-6 leading-relaxed"></p>
+            </div>
+            <div class="flex justify-between items-center border-t border-gold/25 pt-4 mt-2">
+                <div>
+                    <span class="text-[10px] text-gold uppercase tracking-wider block font-semibold">Price</span>
+                    <span id="modal-dish-price" class="text-xl font-serif-title text-espresso font-bold"></span>
+                </div>
+                <div class="text-right">
+                    <span class="text-[10px] text-gold uppercase tracking-wider block font-semibold">Rating</span>
+                    <span id="modal-dish-rating" class="text-xs md:text-sm text-gold font-semibold"></span>
+                </div>
             </div>
         </div>
     </div>
@@ -603,51 +946,147 @@
     ];
 
     let initialReviews = [
-        { name: "陳小姐", rating: 5, comment: "採光與氛圍太令人難忘了！黃金時刻的夕陽灑在餐桌上極其浪漫。" },
-        { name: "David K.", rating: 5, comment: "Wonderful romantic place in Tainan. Excellent steak & great French vibe." },
-        { name: "張先生", rating: 4, comment: "商務聚餐環境非常私密與優雅，服務人員說明的菜色工藝也很專業。" },
-        { name: "Emma H.", rating: 5, comment: "甜點與精品咖啡完美的調配，給人宛如置身巴黎街角咖啡廳的精緻感！" }
+        { name: "陳小姐", rating: 5, comment: "採光與氛圍太令人難忘了！黃金時刻的夕陽灑在餐桌上極其浪漫。", bg: "bg-[#F9F5EE]" },
+        { name: "David K.", rating: 5, comment: "Wonderful romantic place in Tainan. Excellent steak & great French vibe.", bg: "bg-[#EFE6D8]" },
+        { name: "張先生", rating: 4, comment: "商務聚餐環境非常私密與優雅，服務人員說明的菜色工藝也很專業。", bg: "bg-[#E3D8C4]" },
+        { name: "Emma H.", rating: 5, comment: "甜點與精品咖啡完美的調配，給人宛如置身巴黎街角咖啡廳的精緻感！", bg: "bg-[#DFE4DC]" }
     ];
 
     let currentLightboxIndex = 0;
     let activeGalleryItems = [];
+    let currentActiveDishElement = null;
+    let hasDroppedBubbles = false;
+
+    /* Idle Mouse Animation Cue */
+    let idleTimer = null;
+    function resetIdleTimer() {
+        const cue = document.getElementById('idle-scroll-cue');
+        if (cue) cue.classList.remove('show-idle');
+        clearTimeout(idleTimer);
+        
+        idleTimer = setTimeout(() => {
+            if (window.scrollY < document.documentElement.scrollHeight - window.innerHeight - 200) {
+                if (cue) cue.classList.add('show-idle');
+            }
+        }, 3200);
+    }
+
+    function scrollDownToNext() {
+        window.scrollBy({ top: window.innerHeight * 0.7, behavior: 'smooth' });
+        resetIdleTimer();
+    }
+
+    /* Kinetic Split Title Scroll Animations */
+    function initKineticText() {
+        document.querySelectorAll('.kinetic-title').forEach(el => {
+            const text = el.getAttribute('data-split-text') || el.innerText;
+            el.innerHTML = '';
+            el.classList.add('out-view');
+
+            Array.from(text).forEach((char, i) => {
+                const span = document.createElement('span');
+                span.className = 'char';
+                span.innerText = char === ' ' ? '\u00A0' : char;
+                span.style.transitionDelay = `${i * 35}ms`;
+                el.appendChild(span);
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('out-view');
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.kinetic-title').forEach(el => observer.observe(el));
+    }
+
+    /* Horizontal Parallax Scroll Logic */
+    function initHorizontalParallax() {
+        const container = document.getElementById('story-horizontal');
+        const track = document.getElementById('horizontal-track');
+        const numText = document.getElementById('h-scroll-num');
+        const progressBar = document.getElementById('h-scroll-bar');
+        const parallaxImgs = document.querySelectorAll('.parallax-img');
+
+        if (!container || !track) return;
+
+        window.addEventListener('scroll', () => {
+            const rect = container.getBoundingClientRect();
+            const containerHeight = container.offsetHeight - window.innerHeight;
+
+            if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+                const progress = Math.min(Math.max(-rect.top / containerHeight, 0), 1);
+                
+                // Track Horizontal Movement
+                const maxTranslate = track.scrollWidth - window.innerWidth + (window.innerWidth * 0.16);
+                const currentTranslate = progress * maxTranslate;
+                track.style.transform = `translateX(-${currentTranslate}px)`;
+
+                // Update Progress Indicator
+                if (progressBar) progressBar.style.width = `${Math.max(progress * 100, 10)}%`;
+                if (numText) {
+                    const currentChapter = Math.min(Math.floor(progress * 4) + 1, 4);
+                    numText.textContent = `0${currentChapter} / 04`;
+                }
+
+                // Internal Parallax Effect on Card Background Images
+                parallaxImgs.forEach(img => {
+                    img.style.transform = `translateX(${(progress - 0.5) * 60}px)`;
+                });
+            }
+        });
+    }
 
     function renderMenu(filter = 'all') {
         const container = document.getElementById('menu-grid');
-        container.innerHTML = '';
-        const filtered = filter === 'all' ? menuData : menuData.filter(item => item.category === filter);
+        if (!container) return;
+        const existingCards = container.querySelectorAll('.menu-card-item');
+        existingCards.forEach(c => c.classList.remove('show'));
 
-        filtered.forEach(item => {
-            const el = document.createElement('div');
-            el.className = "bg-cream/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-sm border border-gold/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group flex flex-col justify-between";
-            el.onclick = () => openDishModal(item);
+        setTimeout(() => {
+            container.innerHTML = '';
+            const filtered = filter === 'all' ? menuData : menuData.filter(item => item.category === filter);
 
-            el.innerHTML = `
-                <div>
-                    <div class="relative h-52 overflow-hidden p-3">
-                        <img src="${item.image}" alt="${item.zhName}" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/D9C8B2/49372F?text=L%27Heure+Dor%C3%A9e'">
-                        <span class="absolute top-5 right-5 bg-cream/90 backdrop-blur-sm text-gold font-bold text-xs px-2.5 py-1 rounded-full shadow">
-                            ${item.rating}
-                        </span>
+            filtered.forEach((item, index) => {
+                const el = document.createElement('div');
+                el.className = "menu-card-item bg-cream/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-sm border border-gold/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer group flex flex-col justify-between";
+                el.onclick = (e) => openDishModal(item, el, e);
+
+                el.innerHTML = `
+                    <div>
+                        <div class="relative h-52 overflow-hidden p-3">
+                            <img src="${item.image}" alt="${item.zhName}" class="dish-thumb-img w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/D9C8B2/49372F?text=L%27Heure+Dor%C3%A9e'">
+                            <span class="absolute top-5 right-5 bg-cream/90 backdrop-blur-sm text-gold font-bold text-xs px-2.5 py-1 rounded-full shadow">
+                                ${item.rating}
+                            </span>
+                        </div>
+                        <div class="px-6 py-3">
+                            <h3 class="font-serif-title text-xl font-bold text-espresso group-hover:text-gold transition-colors">${item.zhName}</h3>
+                            <p class="font-cursive text-lg text-gold mb-1">${item.enName}</p>
+                            <p class="text-xs text-espresso/70 font-light line-clamp-2 leading-relaxed">${item.desc}</p>
+                        </div>
                     </div>
-                    <div class="px-6 py-3">
-                        <h3 class="font-serif-title text-xl font-bold text-espresso group-hover:text-gold transition-colors">${item.zhName}</h3>
-                        <p class="font-cursive text-lg text-gold mb-1">${item.enName}</p>
-                        <p class="text-xs text-espresso/70 font-light line-clamp-2 leading-relaxed">${item.desc}</p>
+                    <div class="px-6 pb-5 pt-0">
+                        <div class="pt-3 border-t border-gold/15 flex justify-between items-center">
+                            <span class="font-serif-title text-lg font-bold text-espresso">${item.price}</span>
+                            <span class="text-[10px] uppercase text-gold tracking-widest font-semibold flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
+                                <span>展開細節</span>
+                                <i class="fa-solid fa-arrow-right text-[8px]"></i>
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div class="px-6 pb-5 pt-0">
-                    <div class="pt-3 border-t border-gold/15 flex justify-between items-center">
-                        <span class="font-serif-title text-lg font-bold text-espresso">${item.price}</span>
-                        <span class="text-[10px] uppercase text-gold tracking-widest font-semibold flex items-center space-x-1">
-                            <span>詳細細節</span>
-                            <i class="fa-solid fa-arrow-right text-[8px]"></i>
-                        </span>
-                    </div>
-                </div>
-            `;
-            container.appendChild(el);
-        });
+                `;
+                container.appendChild(el);
+
+                setTimeout(() => {
+                    el.classList.add('show');
+                }, index * 60 + 50);
+            });
+        }, existingCards.length > 0 ? 250 : 0);
     }
 
     function filterMenu(category, btn) {
@@ -660,26 +1099,42 @@
         renderMenu(category);
     }
 
+    /* Draggable Floating Speech Bubbles with Falling & Stacking Effect */
     function renderDraggableBubbles() {
         const container = document.getElementById('draggable-bubble-playground');
+        if (!container) return;
         container.innerHTML = '';
         
-        const positions = [
-            { top: '20px', left: '30px', rot: -2 },
-            { top: '40px', left: '420px', rot: 3 },
-            { top: '200px', left: '60px', rot: 1 },
-            { top: '220px', left: '480px', rot: -2 }
+        // Stacked positions near the bottom of playground
+        const stackPositions = [
+            { top: 260, left: 30, rot: -3 },
+            { top: 230, left: 340, rot: 2.5 },
+            { top: 80, left: 160, rot: 1.5 },
+            { top: 120, left: 480, rot: -2 }
         ];
+
+        const isMobile = window.innerWidth < 640;
 
         initialReviews.forEach((r, idx) => {
             const bubble = document.createElement('div');
-            const pos = positions[idx % positions.length];
+            const pos = stackPositions[idx % stackPositions.length];
             const stars = "★".repeat(r.rating);
 
-            bubble.className = "speech-bubble bg-cream/95 border border-gold/30 rounded-3xl p-5 shadow-lg w-[280px] md:w-[320px] flex flex-col justify-between backdrop-blur-md";
-            bubble.style.top = pos.top;
-            bubble.style.left = pos.left;
-            bubble.style.transform = `rotate(${pos.rot}deg)`;
+            let calculatedLeft = isMobile ? (idx % 2 === 0 ? 15 : 40) : pos.left;
+            let calculatedTop = isMobile ? (idx * 110 + 20) : pos.top;
+
+            const colorBg = r.bg || "bg-cream/95";
+
+            bubble.className = `speech-bubble cloud-shape cloud-bubble-drop ${colorBg} backdrop-blur-md p-6 w-[280px] md:w-[320px] flex flex-col justify-between`;
+            bubble.style.top = `${calculatedTop}px`;
+            bubble.style.left = typeof calculatedLeft === 'number' ? `${calculatedLeft}px` : calculatedLeft;
+            bubble.style.setProperty('--base-rot', `${pos.rot}deg`);
+
+            // Hover Bounce Effect
+            bubble.addEventListener('mouseenter', () => {
+                bubble.classList.add('collision-bounce');
+                setTimeout(() => bubble.classList.remove('collision-bounce'), 500);
+            });
 
             bubble.innerHTML = `
                 <div>
@@ -687,16 +1142,34 @@
                         <span class="font-serif-title font-bold text-base text-espresso">${r.name}</span>
                         <span class="text-gold text-xs tracking-wider">${stars}</span>
                     </div>
-                    <p class="text-xs text-espresso/80 leading-relaxed font-light italic">"${r.comment}"</p>
+                    <p class="text-xs text-espresso/85 leading-relaxed font-light italic">"${r.comment}"</p>
                 </div>
-                <div class="mt-3 text-[10px] text-gold/80 text-right uppercase tracking-widest font-semibold">
-                    <i class="fa-solid fa-hand-pointer mr-1"></i> 拖動氣泡
+                <div class="mt-4 text-[10px] text-gold/90 text-right uppercase tracking-widest font-semibold flex items-center justify-end gap-1">
+                    <i class="fa-solid fa-cloud text-[10px]"></i>
+                    <span>雲朵堆積 • 自由拖移</span>
                 </div>
             `;
 
             makeElementDraggable(bubble);
             container.appendChild(bubble);
         });
+
+        // Setup Intersection Observer for Falling Animation Trigger
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasDroppedBubbles) {
+                    hasDroppedBubbles = true;
+                    const bubbles = container.querySelectorAll('.cloud-bubble-drop');
+                    bubbles.forEach((b, i) => {
+                        setTimeout(() => {
+                            b.classList.add('dropped');
+                        }, i * 220); // Staggered drop timing
+                    });
+                }
+            });
+        }, { threshold: 0.25 });
+
+        observer.observe(container);
     }
 
     function makeElementDraggable(elmnt) {
@@ -709,6 +1182,7 @@
             e.preventDefault();
             pos3 = e.clientX;
             pos4 = e.clientY;
+            elmnt.classList.add('is-dragging');
             document.onmouseup = closeDragElement;
             document.onmousemove = elementDrag;
         }
@@ -717,6 +1191,7 @@
             const touch = e.touches[0];
             pos3 = touch.clientX;
             pos4 = touch.clientY;
+            elmnt.classList.add('is-dragging');
             document.ontouchend = closeDragElement;
             document.ontouchmove = elementTouchDrag;
         }
@@ -730,7 +1205,6 @@
             pos4 = e.clientY;
             elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
             elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            elmnt.style.position = "absolute";
         }
 
         function elementTouchDrag(e) {
@@ -741,10 +1215,10 @@
             pos4 = touch.clientY;
             elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
             elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            elmnt.style.position = "absolute";
         }
 
         function closeDragElement() {
+            elmnt.classList.remove('is-dragging');
             document.onmouseup = null;
             document.onmousemove = null;
             document.ontouchend = null;
@@ -758,14 +1232,15 @@
         const rating = parseInt(document.getElementById('review-rating').value);
         const comment = document.getElementById('review-comment').value;
 
-        initialReviews.unshift({ name, rating, comment });
+        initialReviews.unshift({ name, rating, comment, bg: "bg-[#F9F5EE]" });
         renderDraggableBubbles();
         document.getElementById('review-form').reset();
-        showToast('感謝您的寶貴評價！對話氣泡已新增於上方。', 'success');
+        showToast('感謝您的寶貴評價！對話氣泡已優雅飄浮加入上方。', 'success');
     }
 
     function renderGallery(filter = 'all') {
         const container = document.getElementById('gallery-grid');
+        if (!container) return;
         container.innerHTML = '';
         activeGalleryItems = filter === 'all' ? galleryData : galleryData.filter(item => item.category === filter);
 
@@ -794,7 +1269,11 @@
         renderGallery(category);
     }
 
-    function openDishModal(dish) {
+    function openDishModal(dish, cardElem, event) {
+        currentActiveDishElement = cardElem;
+        const imgElem = cardElem.querySelector('.dish-thumb-img');
+        const rect = imgElem.getBoundingClientRect();
+
         document.getElementById('modal-dish-img').src = dish.image;
         document.getElementById('modal-dish-category').textContent = dish.category.toUpperCase();
         document.getElementById('modal-dish-zh').textContent = dish.zhName;
@@ -803,15 +1282,56 @@
         document.getElementById('modal-dish-price').textContent = dish.price;
         document.getElementById('modal-dish-rating').textContent = dish.rating;
 
-        const modal = document.getElementById('dish-modal');
-        modal.classList.remove('opacity-0', 'pointer-events-none');
-        modal.querySelector('div').classList.remove('scale-95');
+        const overlay = document.getElementById('dish-modal-overlay');
+        const modalContainer = document.getElementById('dish-modal-container');
+
+        modalContainer.style.transition = 'none';
+        modalContainer.style.top = `${rect.top}px`;
+        modalContainer.style.left = `${rect.left}px`;
+        modalContainer.style.width = `${rect.width}px`;
+        modalContainer.style.height = `${rect.height}px`;
+        modalContainer.style.opacity = '0.5';
+
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        modalContainer.classList.remove('opacity-0', 'pointer-events-none');
+
+        const isMobile = window.innerWidth < 768;
+        const targetWidth = Math.min(window.innerWidth * 0.9, 720);
+        const targetHeight = isMobile ? 540 : 420;
+        const targetTop = (window.innerHeight - targetHeight) / 2;
+        const targetLeft = (window.innerWidth - targetWidth) / 2;
+
+        modalContainer.offsetHeight;
+
+        modalContainer.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, top 0.45s cubic-bezier(0.16, 1, 0.3, 1), left 0.45s cubic-bezier(0.16, 1, 0.3, 1), width 0.45s cubic-bezier(0.16, 1, 0.3, 1), height 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
+        modalContainer.style.top = `${targetTop}px`;
+        modalContainer.style.left = `${targetLeft}px`;
+        modalContainer.style.width = `${targetWidth}px`;
+        modalContainer.style.height = `${targetHeight}px`;
+        modalContainer.style.opacity = '1';
     }
 
     function closeDishModal() {
-        const modal = document.getElementById('dish-modal');
-        modal.classList.add('opacity-0', 'pointer-events-none');
-        modal.querySelector('div').classList.add('scale-95');
+        const overlay = document.getElementById('dish-modal-overlay');
+        const modalContainer = document.getElementById('dish-modal-container');
+
+        if (currentActiveDishElement) {
+            const imgElem = currentActiveDishElement.querySelector('.dish-thumb-img');
+            const rect = imgElem.getBoundingClientRect();
+
+            modalContainer.style.top = `${rect.top}px`;
+            modalContainer.style.left = `${rect.left}px`;
+            modalContainer.style.width = `${rect.width}px`;
+            modalContainer.style.height = `${rect.height}px`;
+            modalContainer.style.opacity = '0';
+        } else {
+            modalContainer.style.opacity = '0';
+        }
+
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        setTimeout(() => {
+            modalContainer.classList.add('opacity-0', 'pointer-events-none');
+        }, 400);
     }
 
     function openLightbox(index) {
@@ -844,14 +1364,14 @@
             target.scrollIntoView({ behavior: 'smooth' });
         }
         const mobileMenu = document.getElementById('mobile-menu');
-        if (!mobileMenu.classList.contains('hidden')) {
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
             mobileMenu.classList.add('hidden');
         }
     }
 
     function toggleMobileMenu() {
         const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
+        if (menu) menu.classList.toggle('hidden');
     }
 
     function handleInputChange(e) {
@@ -872,22 +1392,13 @@
             return;
         }
 
-        const formData = new FormData(e.target);
-        fetch('/', {
-            method: 'POST',
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString()
-        }).then(() => {
-            showToast(`感謝 ${name} 先生/小姐！您的席位已預約成功（示範預約已送出）。`, 'success');
-            e.target.reset();
-        }).catch(() => {
-            showToast(`預約表單已送出成功！我們將盡快與您聯繫確認。`, 'success');
-            e.target.reset();
-        });
+        showToast(`感謝 ${name} 先生/小姐！您的席位已預約成功（示範預約已送出）。`, 'success');
+        e.target.reset();
     }
 
     function showToast(message, type = 'success') {
         const container = document.getElementById('toast-container');
+        if (!container) return;
         const toast = document.createElement('div');
         toast.className = `px-6 py-3 rounded-2xl shadow-xl text-xs font-semibold tracking-wider text-cream transition-all duration-300 transform translate-y-4 opacity-0 ${type === 'success' ? 'bg-olive' : 'bg-red-800'}`;
         toast.textContent = message;
@@ -912,6 +1423,7 @@
         document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
     }
 
+    // Initialize Page Observers & Listeners
     window.onload = function() {
         const dateInput = document.getElementById('res-date');
         if (dateInput) {
@@ -924,6 +1436,18 @@
         renderGallery('all');
         renderDraggableBubbles();
         setupScrollAnimations();
+        initKineticText();
+        initHorizontalParallax();
+
+        // Mouse Idle Listeners
+        window.addEventListener('mousemove', resetIdleTimer);
+        window.addEventListener('scroll', resetIdleTimer);
+        window.addEventListener('keydown', resetIdleTimer);
+        resetIdleTimer();
+
+        window.addEventListener('resize', () => {
+            renderDraggableBubbles();
+        });
     };
 </script>
 
