@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F4EFE6">
+  <meta name="description" content="L'Heure Dorée 金色時光｜台南當代法式餐廳，感受日光、料理與相聚的美好時刻。">
+  <title>L'Heure Dorée｜金色時光・台南法式餐廳</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    cream: '#F4EFE6',        /* 奶油白 */
+                    champagne: '#D9C8B2',    /* 香檳米 */
+                    gold: '#A68B6C',         /* 復古金 */
+                    olive: '#596457',        /* 橄欖綠 */
+                    espresso: '#49372F',     /* 深咖啡 */
+                    paper: '#F2ECE1',        /* 復古紙張基底 */
+                    darkGold: '#8C7254'
+                },
+                fontFamily: {
+                    serif: ['"Cormorant Garamond"', '"Noto Serif TC"', 'serif'],
+                    sans: ['"Noto Sans TC"', 'sans-serif'],
+                    handwriting: ['"Alex Brush"', 'cursive'],
+                    zhSerif: ['"Noto Serif TC"', 'serif']
+                }
+            }
+        }
+    }
+</script>
+<style>
+    body {
+        background-color: #F4EFE6;
+        color: #49372F;
+        font-family: 'Noto Sans TC', sans-serif;
+        overflow-x: hidden;
+        background-image: radial-gradient(#A68B6C 0.4px, transparent 0.4px), radial-gradient(#A68B6C 0.4px, #F4EFE6 0.4px);
+        background-size: 16px 16px;
+        background-position: 0 0, 8px 8px;
+    }
+    h1, h2, h3, h4, .font-serif-title {
+        font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
+    }
+    .font-cursive {
+        font-family: 'Alex Brush', cursive;
+    }
+
+    /* Paper Texture Effect */
+    .paper-texture {
+        background-color: #F2ECE1;
+        background-image: radial-gradient(#d3c6b0 0.75px, transparent 0.75px), radial-gradient(#d3c6b0 0.75px, #F2ECE1 0.75px);
+        background-size: 12px 12px;
+        background-position: 0 0, 6px 6px;
+        box-shadow: inset 0 0 80px rgba(166, 139, 108, 0.15);
+        position: relative;
+    }
+    .paper-texture::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+    }
+
+    /* Frosted Glass Effect */
+    .glass-card {
+        background: rgba(244, 239, 230, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(166, 139, 108, 0.25);
+    }
+
+    /* Scalloped Decorative Banner Border */
+    .decorative-divider {
+        background-color: #D9C8B2;
+        background-image: radial-gradient(circle at 10px 0, transparent 8px, #D9C8B2 9px);
+        background-size: 20px 20px;
+        background-repeat: repeat-x;
+    }
+
+    /* Draggable Speech Bubble Cards */
+    .speech-bubble {
+        position: absolute;
+        cursor: grab;
+        user-select: none;
+        touch-action: none;
+        transition: box-shadow 0.2s;
+    }
+    .speech-bubble:active {
+        cursor: grabbing;
+        transform: scale(1.03) rotate(1deg) !important;
+        z-index: 30 !important;
+        box-shadow: 0 20px 30px rgba(73, 55, 47, 0.25) !important;
+    }
+
+    /* Smooth Fade In Scroll Animations */
+    .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, ::before, ::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+        .fade-in-up {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #F4EFE6; }
+    ::-webkit-scrollbar-thumb { background: #A68B6C; border-radius: 4px; }
+</style>
+
+</head>
+<body>
+<!-- Top Announcement Bar -->
+<div class="bg-espresso text-champagne text-[11px] py-1.5 text-center font-serif-title tracking-widest uppercase border-b border-gold/30">
+    ★ Enjoy A Golden Moment in Tainan • Natural Sunlight & Warm Ambience ★
+</div>
+
+<!-- Toast Container -->
+<div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+<!-- Navigation Bar -->
+<nav id="navbar" class="fixed top-8 left-0 w-full z-40 transition-all duration-300 py-3 px-6 md:px-12 bg-cream/90 backdrop-blur-md border-b border-gold/20 shadow-sm">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="#home" class="flex flex-col items-center group cursor-pointer" onclick="handleNavClick(event, 'home')">
+            <span class="text-2xl md:text-3xl font-bold tracking-widest text-espresso group-hover:text-gold transition-colors font-serif-title">L'Heure Dorée</span>
+            <span class="text-[9px] tracking-[0.25em] text-gold uppercase -mt-1 font-semibold">金色時光 • Tainan</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center space-x-8 text-sm tracking-wider uppercase font-medium">
+            <a href="#home" id="nav-home" onclick="handleNavClick(event, 'home')" class="nav-link text-espresso hover:text-gold transition-colors py-1 relative">首頁</a>
+            <a href="#about" id="nav-about" onclick="handleNavClick(event, 'about')" class="nav-link text-espresso hover:text-gold transition-colors py-1 relative">品牌理念</a>
+            <a href="#menu" id="nav-menu" onclick="handleNavClick(event, 'menu')" class="nav-link text-espresso hover:text-gold transition-colors py-1 relative">菜單介紹</a>
+            <a href="#gallery" id="nav-gallery" onclick="handleNavClick(event, 'gallery')" class="nav-link text-espresso hover:text-gold transition-colors py-1 relative">光影藝廊</a>
+            <a href="#info" id="nav-info" onclick="handleNavClick(event, 'info')" class="nav-link text-espresso hover:text-gold transition-colors py-1 relative">營業資訊</a>
+        </div>
+
+        <div class="hidden md:block">
+            <a href="#reservation" onclick="handleNavClick(event, 'reservation')" 
+               class="inline-block px-6 py-2.5 bg-gold text-cream hover:bg-espresso transition-all duration-300 rounded-full text-xs tracking-widest uppercase shadow-sm font-semibold">
+                Reserve a Table
+            </a>
+        </div>
+
+        <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden text-espresso focus:outline-none p-2" onclick="toggleMobileMenu()">
+            <i class="fa-solid fa-bars text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-cream/95 backdrop-blur-lg border-b border-gold/20 shadow-xl py-6 px-8 flex flex-col space-y-4 text-center">
+        <a href="#home" onclick="handleNavClick(event, 'home')" class="text-espresso hover:text-gold py-2 uppercase tracking-wider border-b border-gold/10">首頁 Home</a>
+        <a href="#about" onclick="handleNavClick(event, 'about')" class="text-espresso hover:text-gold py-2 uppercase tracking-wider border-b border-gold/10">品牌理念 About</a>
+        <a href="#menu" onclick="handleNavClick(event, 'menu')" class="text-espresso hover:text-gold py-2 uppercase tracking-wider border-b border-gold/10">菜單介紹 Menu</a>
+        <a href="#gallery" onclick="handleNavClick(event, 'gallery')" class="text-espresso hover:text-gold py-2 uppercase tracking-wider border-b border-gold/10">光影藝廊 Gallery</a>
+        <a href="#info" onclick="handleNavClick(event, 'info')" class="text-espresso hover:text-gold py-2 uppercase tracking-wider border-b border-gold/10">營業資訊 Information</a>
+        <a href="#reservation" onclick="handleNavClick(event, 'reservation')" class="mt-2 inline-block py-3 bg-gold text-cream rounded-full text-xs tracking-widest uppercase font-semibold">
+            Reserve a Table 線上訂位
+        </a>
+    </div>
+</nav>
+
+<!-- HOME SECTION -->
+<section id="home" class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=1920&auto=format&fit=crop" 
+             alt="L'Heure Dorée Dining Atmosphere" 
+             class="w-full h-full object-cover filter brightness-[0.55]"
+             onerror="this.src='https://placehold.co/1920x1080/49372F/D9C8B2?text=L%27Heure+Dor%C3%A9e+Tainan'">
+        <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-espresso/40"></div>
+    </div>
+
+    <div class="relative z-10 text-center text-cream px-4 max-w-4xl mx-auto fade-in-up">
+        <span class="inline-block text-gold uppercase tracking-[0.3em] text-xs md:text-sm mb-2 font-semibold border-b border-gold/50 pb-1">Tainan, Taiwan</span>
+        <p class="font-cursive text-3xl sm:text-5xl text-champagne mb-1">Soft living, Beautifully Served</p>
+        <h1 class="text-4xl sm:text-6xl md:text-8xl font-serif-title italic mb-3 tracking-wide font-normal leading-tight">
+            L'Heure Dorée
+        </h1>
+        <p class="text-xs md:text-base font-light text-cream/80 max-w-xl mx-auto mb-10 tracking-wider">
+            Discover the art of French dining & warm sunlight in the heart of Tainan.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+            <a href="#menu" onclick="handleNavClick(event, 'menu')" 
+               class="w-full sm:w-auto px-8 py-3.5 bg-cream/10 backdrop-blur-md border border-champagne text-champagne hover:bg-champagne hover:text-espresso transition-all duration-300 rounded-full text-xs tracking-[0.2em] uppercase font-medium">
+                Discover Our Menu
+            </a>
+            <a href="#reservation" onclick="handleNavClick(event, 'reservation')" 
+               class="w-full sm:w-auto px-8 py-3.5 bg-gold text-cream hover:bg-espresso border border-gold transition-all duration-300 rounded-full text-xs tracking-[0.2em] uppercase font-semibold shadow-lg">
+                Reserve a Table
+            </a>
+        </div>
+    </div>
+
+    <a href="#about" onclick="handleNavClick(event, 'about')" aria-label="Scroll Down" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-champagne/80 hover:text-champagne transition-colors animate-bounce z-10">
+        <i class="fa-solid fa-chevron-down text-xl"></i>
+    </a>
+</section>
+
+<!-- Ribbon Divider -->
+<div class="bg-champagne/40 py-3 border-y border-gold/20 text-center text-xs text-espresso font-serif-title tracking-widest flex justify-around items-center px-4 overflow-hidden">
+    <span>★ Cotton & Linens ★</span>
+    <span class="hidden sm:inline">★ Warm Sunlight ★</span>
+    <span>★ Fine French Dining ★</span>
+    <span class="hidden md:inline">★ Artisanal Desserts ★</span>
+    <span>★ Memorable Hours ★</span>
+</div>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16 fade-in-up">
+        <p class="font-cursive text-3xl md:text-4xl text-gold mb-1">Where cozy corners meet French culinary art</p>
+        <h2 class="text-3xl md:text-5xl font-serif-title text-espresso">日光與光影交織的黃金時刻</h2>
+        <div class="w-16 h-[1px] bg-gold mx-auto mt-4"></div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="space-y-6 fade-in-up">
+            <p class="text-espresso/80 leading-relaxed font-light text-justify text-sm md:text-base">
+                <strong>L'Heure Dorée</strong> 在法文中意指「黃金時刻」，象徵著日光自然灑落、光線溫潤而柔和的美好時光。我們相信，極致的用餐體驗不僅來自盤中的法式料理，更源自空間、光影以及人與人之間真摯的交流感。
+            </p>
+            <p class="text-espresso/80 leading-relaxed font-light text-justify text-sm md:text-base">
+                坐落於台南古都靜謐街角，白天擁有絕佳的自然採光，隨季節更迭鋪陳出優雅自然的法式氛圍；夜晚則透過可調式冷暖色調情境照明，映照出華麗而溫馨的浪漫氛圍。
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                <div class="p-4 rounded-2xl glass-card border border-gold/20">
+                    <i class="fa-solid fa-utensils text-gold mb-2 text-lg"></i>
+                    <h4 class="font-serif-title font-bold text-base text-espresso">當代法式精緻料理</h4>
+                    <p class="text-xs text-espresso/70 mt-1">嚴選在地食材與藝術風格擺盤</p>
+                </div>
+                <div class="p-4 rounded-2xl glass-card border border-gold/20">
+                    <i class="fa-solid fa-sun text-gold mb-2 text-lg"></i>
+                    <h4 class="font-serif-title font-bold text-base text-espresso">自然採光與情境照明</h4>
+                    <p class="text-xs text-espresso/70 mt-1">隨時刻變換的冷暖光影空間</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative fade-in-up">
+            <div class="relative z-10 rounded-3xl overflow-hidden shadow-xl border-8 border-cream/90">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop" 
+                     alt="Restaurant Interior" 
+                     class="w-full h-[420px] object-cover"
+                     onerror="this.src='https://placehold.co/800x600/596457/F4EFE6?text=Interior+Space'">
+            </div>
+            <div class="absolute -bottom-6 -left-6 z-20 hidden sm:block w-48 h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-cream">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=600&auto=format&fit=crop" 
+                     alt="Table Detail" 
+                     class="w-full h-full object-cover"
+                     onerror="this.src='https://placehold.co/400x400/A68B6C/F4EFE6?text=Details'">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MENU SECTION (VINTAGE PAPER TEXTURE BACKGROUND) -->
+<section id="menu" class="py-24 paper-texture border-y border-gold/30 px-6 md:px-12 relative">
+    <div class="max-w-7xl mx-auto relative z-10">
+        <div class="text-center max-w-2xl mx-auto mb-12 fade-in-up">
+            <p class="font-cursive text-4xl text-gold mb-1">Le Menu Gastronomique</p>
+            <h2 class="text-3xl md:text-5xl font-serif-title text-espresso">法式古典菜單</h2>
+            <p class="text-espresso/70 text-xs md:text-sm mt-2 font-light">嚴選在地優質食材結合經典法式烹飪工藝（註：價格與評價皆為展示示範資料）</p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-12 fade-in-up">
+            <button onclick="filterMenu('all', this)" class="menu-tab-btn active px-6 py-2 rounded-full text-xs md:text-sm tracking-wider uppercase transition-all duration-300 bg-gold text-cream shadow-md font-semibold">
+                全部菜單
+            </button>
+            <button onclick="filterMenu('starters', this)" class="menu-tab-btn px-6 py-2 rounded-full text-xs md:text-sm tracking-wider uppercase transition-all duration-300 bg-cream/90 text-espresso border border-gold/30 hover:border-gold">
+                Starters 前菜
+            </button>
+            <button onclick="filterMenu('mains', this)" class="menu-tab-btn px-6 py-2 rounded-full text-xs md:text-sm tracking-wider uppercase transition-all duration-300 bg-cream/90 text-espresso border border-gold/30 hover:border-gold">
+                Main Courses 主餐
+            </button>
+            <button onclick="filterMenu('desserts', this)" class="menu-tab-btn px-6 py-2 rounded-full text-xs md:text-sm tracking-wider uppercase transition-all duration-300 bg-cream/90 text-espresso border border-gold/30 hover:border-gold">
+                Desserts 甜點
+            </button>
+            <button onclick="filterMenu('beverages', this)" class="menu-tab-btn px-6 py-2 rounded-full text-xs md:text-sm tracking-wider uppercase transition-all duration-300 bg-cream/90 text-espresso border border-gold/30 hover:border-gold">
+                Beverages 飲品
+            </button>
+        </div>
+
+        <!-- Menu Cards Grid -->
+        <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+        <!-- DRAGGABLE BUBBLES REVIEWS SECTION -->
+        <div class="mt-24 pt-16 border-t border-gold/30 fade-in-up">
+            <div class="text-center mb-8">
+                <p class="font-cursive text-3xl text-gold mb-1">Guest Experiences & Love</p>
+                <h3 class="text-2xl md:text-4xl font-serif-title text-espresso">顧客對話氣泡與評價（支援滑鼠拖移！）</h3>
+                <p class="text-xs text-espresso/60 tracking-wider mt-2">嘗試用滑鼠或手指拖動評價氣泡，感受互動樂趣</p>
+            </div>
+
+            <!-- Draggable Playground -->
+            <div id="draggable-bubble-playground" class="relative w-full h-[450px] bg-cream/40 rounded-3xl border border-dashed border-gold/40 p-6 overflow-hidden">
+                <!-- Javascript populated bubbles -->
+            </div>
+
+            <!-- Review Submission Form -->
+            <form id="review-form" onsubmit="handleReviewSubmit(event)" class="max-w-2xl mx-auto bg-cream/90 backdrop-blur-sm p-6 md:p-8 rounded-3xl shadow-md border border-gold/30 mt-12">
+                <h4 class="text-xl font-serif-title text-espresso mb-4">發表您的用餐留言（新增為對話氣泡）</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-espresso uppercase mb-1">您的尊姓大名 *</label>
+                        <input type="text" id="review-name" required placeholder="例如：林小姐" class="w-full px-4 py-2.5 text-sm bg-cream border border-gold/30 rounded-xl focus:outline-none focus:border-gold text-espresso">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-espresso uppercase mb-1">給予星級評分 *</label>
+                        <select id="review-rating" class="w-full px-4 py-2.5 text-sm bg-cream border border-gold/30 rounded-xl focus:outline-none focus:border-gold text-espresso">
+                            <option value="5">★★★★★ (5/5 極致美味)</option>
+                            <option value="4">★★★★☆ (4/5 非常優秀)</option>
+                            <option value="3">★★★☆☆ (3/5 普通滿意)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-xs font-semibold text-espresso uppercase mb-1">用餐心得 *</label>
+                    <textarea id="review-comment" required rows="2" placeholder="請分享您對餐點、光影氣氛或服務的想法..." class="w-full px-4 py-2.5 text-sm bg-cream border border-gold/30 rounded-xl focus:outline-none focus:border-gold text-espresso"></textarea>
+                </div>
+                <button type="submit" class="w-full sm:w-auto px-8 py-3 bg-espresso text-cream hover:bg-gold transition-colors duration-300 rounded-full text-xs tracking-widest uppercase font-semibold shadow">
+                    送出評價氣泡
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section id="gallery" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-12 fade-in-up">
+        <p class="font-cursive text-3xl text-gold mb-1">Handpicked moments with Intention</p>
+        <h2 class="text-3xl md:text-5xl font-serif-title text-espresso">光影寫真藝廊</h2>
+        <p class="text-espresso/70 text-sm mt-2 font-light">捕捉日光與浪漫晚餐的交織瞬間</p>
+    </div>
+
+    <div class="flex justify-center space-x-2 md:space-x-6 mb-8 text-xs md:text-sm font-medium tracking-wider uppercase fade-in-up">
+        <button onclick="filterGallery('all', this)" class="gallery-tag active text-gold border-b-2 border-gold pb-1 px-2">All 全部</button>
+        <button onclick="filterGallery('dining', this)" class="gallery-tag text-espresso/60 hover:text-gold pb-1 px-2">Dining 用餐空間</button>
+        <button onclick="filterGallery('cuisine', this)" class="gallery-tag text-espresso/60 hover:text-gold pb-1 px-2">Cuisine 精緻料理</button>
+        <button onclick="filterGallery('atmosphere', this)" class="gallery-tag text-espresso/60 hover:text-gold pb-1 px-2">Atmosphere 光影氛圍</button>
+        <button onclick="filterGallery('details', this)" class="gallery-tag text-espresso/60 hover:text-gold pb-1 px-2">Details 空間細節</button>
+    </div>
+
+    <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+</section>
+
+<div class="w-full h-8 decorative-divider opacity-70"></div>
+
+<!-- RESERVATION SECTION -->
+<section id="reservation" class="py-24 bg-olive/10 border-t border-gold/20 px-6 md:px-12 relative">
+    <div class="max-w-4xl mx-auto glass-card rounded-3xl p-8 md:p-14 shadow-2xl border border-gold/30 relative z-10 fade-in-up">
+        <div class="text-center mb-10">
+            <p class="font-cursive text-4xl text-gold mb-1">Réservation en Ligne</p>
+            <h2 class="text-3xl md:text-4xl font-serif-title text-espresso">線上席位預約</h2>
+            <p class="text-espresso/70 text-xs md:text-sm mt-2 font-light">為維護高品質用餐體驗，建議您提前預約席位。</p>
+        </div>
+
+        <form name="restaurant-reservation" 
+              method="POST" 
+              data-netlify="true" 
+              netlify-honeypot="bot-field" 
+              id="booking-form" 
+              onsubmit="handleReservationSubmit(event)" 
+              class="space-y-6">
+            
+            <input type="hidden" name="form-name" value="restaurant-reservation" />
+            <p class="hidden">
+                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <label class="block text-xs font-bold text-espresso uppercase tracking-wider mb-2">用餐日期 Date *</label>
+                    <input type="date" name="date" id="res-date" required onchange="handleInputChange(event)" class="w-full px-4 py-3 bg-cream/90 border border-gold/30 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none text-espresso text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-espresso uppercase tracking-wider mb-2">用餐時段 Time *</label>
+                    <select name="time" id="res-time" required onchange="handleInputChange(event)" class="w-full px-4 py-3 bg-cream/90 border border-gold/30 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none text-espresso text-sm">
+                        <option value="">請選擇時段</option>
+                        <option value="11:30">11:30 午餐</option>
+                        <option value="12:30">12:30 午餐</option>
+                        <option value="14:30">14:30 下午茶</option>
+                        <option value="17:30">17:30 晚餐</option>
+                        <option value="19:30">19:30 晚餐</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-espresso uppercase tracking-wider mb-2">用餐人數 Guests *</label>
+                    <select name="guests" id="res-guests" required onchange="handleInputChange(event)" class="w-full px-4 py-3 bg-cream/90 border border-gold/30 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none text-espresso text-sm">
+                        <option value="1">1 位</option>
+                        <option value="2" selected>2 位</option>
+                        <option value="4">4 位</option>
+                        <option value="6">6 位</option>
+                        <option value="8+">8 位以上 (包廂預約)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-xs font-bold text-espresso uppercase tracking-wider mb-2">訂位人姓名 Name *</label>
+                    <input type="text" name="name" id="res-name" required placeholder="請輸入全名" onchange="handleInputChange(event)" class="w-full px-4 py-3 bg-cream/90 border border-gold/30 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none text-espresso text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-espresso uppercase tracking-wider mb-2">聯絡電話 Phone *</label>
+                    <input type="tel" name="phone" id="res-phone" required placeholder="0912-345-678" onchange="handleInputChange(event)" class="w-full px-4 py-3 bg-cream/90 border border-gold/30 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none text-espresso text-sm">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-xs font-bold text-espresso uppercase tracking-wider mb-2">電子郵件 Email *</label>
+                    <input type="email" name="email" id="res-email" required placeholder="example@email.com" onchange="handleInputChange(event)" class="w-full px-4 py-3 bg-cream/90 border border-gold/30 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none text-espresso text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-espresso uppercase tracking-wider mb-2">用餐目的 Occasion</label>
+                    <select name="occasion" id="res-occasion" onchange="handleInputChange(event)" class="w-full px-4 py-3 bg-cream/90 border border-gold/30 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none text-espresso text-sm">
+                        <option value="情侶約會">情侶約會 / 紀念日</option>
+                        <option value="家庭聚餐">家庭聚餐</option>
+                        <option value="商務聚會">商務交流 / 會議</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-espresso uppercase tracking-wider mb-2">特殊需求與飲食限制 Special Requests</label>
+                <textarea name="special_requests" id="res-requests" rows="3" onchange="handleInputChange(event)" placeholder="過敏原需求、需要嬰兒座椅或希望靠窗..." class="w-full px-4 py-3 bg-cream/90 border border-gold/30 rounded-xl focus:ring-2 focus:ring-gold focus:outline-none text-espresso text-sm"></textarea>
+            </div>
+
+            <div class="text-center pt-4">
+                <button type="submit" 
+                        class="px-10 py-4 bg-gold text-cream hover:bg-espresso transition-all duration-300 rounded-full text-xs tracking-[0.2em] uppercase font-bold shadow-lg">
+                    Submit Reservation 確認預約
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- INFORMATION SECTION -->
+<section id="info" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8 fade-in-up">
+            <div>
+                <p class="font-cursive text-3xl text-gold mb-1">Informations & Contact</p>
+                <h2 class="text-3xl md:text-5xl font-serif-title text-espresso">營業與造訪資訊</h2>
+            </div>
+
+            <div class="space-y-6 text-espresso/80 font-light">
+                <div class="flex items-start space-x-4">
+                    <div class="w-10 h-10 rounded-full bg-champagne/40 flex items-center justify-center text-gold shrink-0 mt-1">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-espresso">餐廳地址 Address</h4>
+                        <p class="text-sm mt-1">台灣台南市中西區中正路 100 號（示範預留地址）</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <div class="w-10 h-10 rounded-full bg-champagne/40 flex items-center justify-center text-gold shrink-0 mt-1">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-espresso">營業時間 Opening Hours</h4>
+                        <p class="text-sm mt-1">週二至週日 (Tuesday – Sunday)</p>
+                        <p class="text-sm">午餐 Lunch: 11:30 – 15:00 | 晚餐 Dinner: 17:30 – 21:30</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rounded-3xl overflow-hidden shadow-xl border-4 border-cream/80 h-[400px] relative fade-in-up">
+            <iframe 
+                title="Google Maps Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.682333423719!2d120.200123!3d22.992345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDU5JzMyLjQiTiAxMjDCsDEyJzAwLjQiRQ!5e0!3m2!1szh-TW!2stw!4v1620000000000!5m2!1szh-TW!2stw" 
+                class="w-full h-full border-0 filter grayscale contrast-125 opacity-90 hover:grayscale-0 transition-all duration-500" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-espresso text-cream/80 py-16 px-6 md:px-12 border-t border-gold/20">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div class="space-y-3">
+            <h3 class="text-2xl font-serif-title text-champagne">L'Heure Dorée</h3>
+            <p class="text-xs text-champagne/70 italic font-serif-title">A Golden Moment, Beautifully Served.</p>
+        </div>
+        <div>
+            <h4 class="text-sm font-semibold text-champagne uppercase tracking-wider mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-xs">
+                <li><a href="#home" onclick="handleNavClick(event, 'home')" class="hover:text-gold">首頁 Home</a></li>
+                <li><a href="#menu" onclick="handleNavClick(event, 'menu')" class="hover:text-gold">菜單 Menu</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-sm font-semibold text-champagne uppercase tracking-wider mb-4">Contact</h4>
+            <p class="text-xs">台南市中西區中正路 100 號</p>
+        </div>
+        <div>
+            <h4 class="text-sm font-semibold text-champagne uppercase tracking-wider mb-4">Social</h4>
+            <div class="flex space-x-3">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram link" class="w-8 h-8 rounded-full bg-cream/10 hover:bg-gold flex items-center justify-center text-champagne hover:text-espresso transition-colors">
+                    <i class="fa-brands fa-instagram text-xs"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook link" class="w-8 h-8 rounded-full bg-cream/10 hover:bg-gold flex items-center justify-center text-champagne hover:text-espresso transition-colors">
+                    <i class="fa-brands fa-facebook-f text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto pt-10 mt-10 border-t border-cream/10 text-center text-xs text-cream/50">
+        Copyright © L'Heure Dorée Tainan. All Rights Reserved.
+    </div>
+</footer>
+
+<!-- MODAL: DISH DETAIL -->
+<div id="dish-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-cream rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl border border-gold/30 transform scale-95 transition-transform duration-300 relative">
+        <button onclick="closeDishModal()" aria-label="Close Modal" class="absolute top-4 right-4 z-10 w-8 h-8 bg-cream/80 text-espresso rounded-full flex items-center justify-center hover:bg-gold hover:text-cream transition-colors">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="h-64 overflow-hidden relative">
+            <img id="modal-dish-img" src="" alt="" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6">
+            <span id="modal-dish-category" class="text-[10px] uppercase tracking-widest text-gold font-bold px-2 py-0.5 rounded bg-gold/10">Category</span>
+            <h3 id="modal-dish-zh" class="text-2xl font-serif-title text-espresso mt-2"></h3>
+            <p id="modal-dish-en" class="text-xs font-serif-title italic text-gold mb-3"></p>
+            <p id="modal-dish-desc" class="text-sm text-espresso/80 font-light mb-4 leading-relaxed"></p>
+            <div class="flex justify-between items-center border-t border-gold/20 pt-4">
+                <span id="modal-dish-price" class="text-xl font-serif-title text-espresso font-bold"></span>
+                <span id="modal-dish-rating" class="text-xs text-gold"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: GALLERY LIGHTBOX -->
+<div id="lightbox" class="fixed inset-0 z-50 flex items-center justify-center bg-espresso/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 p-4">
+    <button onclick="closeLightbox()" aria-label="Close Lightbox" class="absolute top-6 right-6 text-cream text-2xl hover:text-gold transition-colors z-20">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+    <button onclick="navigateLightbox(-1)" aria-label="Previous Image" class="absolute left-4 md:left-8 text-cream text-3xl hover:text-gold transition-colors z-20 p-2">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button onclick="navigateLightbox(1)" aria-label="Next Image" class="absolute right-4 md:right-8 text-cream text-3xl hover:text-gold transition-colors z-20 p-2">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    <div class="max-w-4xl max-h-[85vh] flex flex-col items-center">
+        <img id="lightbox-img" src="" alt="Gallery Lightbox Preview" class="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl">
+        <p id="lightbox-caption" class="text-champagne font-serif-title text-base mt-4 text-center tracking-wide"></p>
+    </div>
+</div>
+
+<!-- JAVASCRIPT LOGIC -->
+<script>
+    const menuData = [
+        { id: 1, category: 'starters', zhName: '法式黑松露干貝慕斯', enName: 'Pan-Seared Scallops with Truffle Foam', desc: '嚴選北海道生食級大干貝，搭配雅致黑松露泡沫與時令香草油，入口鮮甜柔滑。', price: 'NT$ 680', rating: '★★★★★ 4.9', image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=800&auto=format&fit=crop' },
+        { id: 2, category: 'starters', zhName: '經典法式洋蔥湯', enName: 'Traditional French Onion Soup', desc: '慢火熬煮焦糖化洋蔥，搭配香濃葛瑞爾起司焗烤法國麵包，溫潤暖胃。', price: 'NT$ 420', rating: '★★★★★ 4.8', image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=800&auto=format&fit=crop' },
+        { id: 3, category: 'mains', zhName: '爐烤極黑牛菲力佐紅酒醬', enName: 'Roasted Tenderloin with Red Wine Jus', desc: '頂級美國菲力牛排爐烤至完美五分熟，佐以波爾口紅酒慢熬肉汁與季節時蔬。', price: 'NT$ 1,680', rating: '★★★★★ 5.0', image: 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=800&auto=format&fit=crop' },
+        { id: 4, category: 'mains', zhName: '普羅旺斯香草烤羊排', enName: 'Herbes de Provence Provençal Lamb Chops', desc: '紐西蘭精選小羔羊排裹上第戎芥末與第戎香草碎烘烤，肉質細緻無腥味。', price: 'NT$ 1,480', rating: '★★★★★ 4.9', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop' },
+        { id: 5, category: 'desserts', zhName: '香草舒芙蕾佐覆盆子冰淇淋', enName: 'Classic Vanilla Soufflé', desc: '現烤法式舒芙蕾散發濃郁馬達加斯加香草香氣，搭配酸甜手工覆盆子冰淇淋。', price: 'NT$ 380', rating: '★★★★★ 4.9', image: 'https://images.unsplash.com/photo-1579372786545-d24232daf58c?q=80&w=800&auto=format&fit=crop' },
+        { id: 6, category: 'desserts', zhName: '黃金焦糖烤布蕾', enName: 'Crème Brûlée Dorée', desc: '香滑濃郁的香草蛋奶凍覆蓋薄脆黃金焦糖片，感受酥脆與綿密的雙重奏。', price: 'NT$ 320', rating: '★★★★☆ 4.7', image: 'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?q=80&w=800&auto=format&fit=crop' },
+        { id: 7, category: 'beverages', zhName: '法式手沖精品莊園咖啡', enName: 'Artisanal Pour-Over Coffee', desc: '嚴選衣索比亞日曬耶加雪菲，帶有明亮柑橘與茉莉花香，午後時光的完美搭配。', price: 'NT$ 260', rating: '★★★★★ 4.9', image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop' },
+        { id: 8, category: 'beverages', zhName: '皇家伯爵夫人午茶拿鐵', enName: 'Royal Earl Grey Tea Latte', desc: '佛手柑香氣交織溫熱絲滑鮮奶，沈浸於金色時光的溫暖撫慰。', price: 'NT$ 240', rating: '★★★★☆ 4.8', image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=800&auto=format&fit=crop' }
+    ];
+
+    const galleryData = [
+        { category: 'dining', title: '日光灑落的主用餐區', image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop' },
+        { category: 'cuisine', title: '精緻法式擺盤工藝', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop' },
+        { category: 'atmosphere', title: '溫暖柔和的黃金燈光', image: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=1000&auto=format&fit=crop' },
+        { category: 'details', title: '細緻餐桌佈置與銀器', image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1000&auto=format&fit=crop' },
+        { category: 'dining', title: '私密商務包廂', image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000&auto=format&fit=crop' },
+        { category: 'cuisine', title: '法式甜點與下午茶', image: 'https://images.unsplash.com/photo-1579372786545-d24232daf58c?q=80&w=1000&auto=format&fit=crop' }
+    ];
+
+    let initialReviews = [
+        { name: "陳小姐", rating: 5, comment: "採光與氛圍太令人難忘了！黃金時刻的夕陽灑在餐桌上極其浪漫。" },
+        { name: "David K.", rating: 5, comment: "Wonderful romantic place in Tainan. Excellent steak & great French vibe." },
+        { name: "張先生", rating: 4, comment: "商務聚餐環境非常私密與優雅，服務人員說明的菜色工藝也很專業。" },
+        { name: "Emma H.", rating: 5, comment: "甜點與精品咖啡完美的調配，給人宛如置身巴黎街角咖啡廳的精緻感！" }
+    ];
+
+    let currentLightboxIndex = 0;
+    let activeGalleryItems = [];
+
+    function renderMenu(filter = 'all') {
+        const container = document.getElementById('menu-grid');
+        container.innerHTML = '';
+        const filtered = filter === 'all' ? menuData : menuData.filter(item => item.category === filter);
+
+        filtered.forEach(item => {
+            const el = document.createElement('div');
+            el.className = "bg-cream/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-sm border border-gold/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group flex flex-col justify-between";
+            el.onclick = () => openDishModal(item);
+
+            el.innerHTML = `
+                <div>
+                    <div class="relative h-52 overflow-hidden p-3">
+                        <img src="${item.image}" alt="${item.zhName}" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/D9C8B2/49372F?text=L%27Heure+Dor%C3%A9e'">
+                        <span class="absolute top-5 right-5 bg-cream/90 backdrop-blur-sm text-gold font-bold text-xs px-2.5 py-1 rounded-full shadow">
+                            ${item.rating}
+                        </span>
+                    </div>
+                    <div class="px-6 py-3">
+                        <h3 class="font-serif-title text-xl font-bold text-espresso group-hover:text-gold transition-colors">${item.zhName}</h3>
+                        <p class="font-cursive text-lg text-gold mb-1">${item.enName}</p>
+                        <p class="text-xs text-espresso/70 font-light line-clamp-2 leading-relaxed">${item.desc}</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-5 pt-0">
+                    <div class="pt-3 border-t border-gold/15 flex justify-between items-center">
+                        <span class="font-serif-title text-lg font-bold text-espresso">${item.price}</span>
+                        <span class="text-[10px] uppercase text-gold tracking-widest font-semibold flex items-center space-x-1">
+                            <span>詳細細節</span>
+                            <i class="fa-solid fa-arrow-right text-[8px]"></i>
+                        </span>
+                    </div>
+                </div>
+            `;
+            container.appendChild(el);
+        });
+    }
+
+    function filterMenu(category, btn) {
+        document.querySelectorAll('.menu-tab-btn').forEach(b => {
+            b.classList.remove('bg-gold', 'text-cream', 'shadow-md');
+            b.classList.add('bg-cream/90', 'text-espresso', 'border', 'border-gold/30');
+        });
+        btn.classList.remove('bg-cream/90', 'text-espresso', 'border', 'border-gold/30');
+        btn.classList.add('bg-gold', 'text-cream', 'shadow-md');
+        renderMenu(category);
+    }
+
+    function renderDraggableBubbles() {
+        const container = document.getElementById('draggable-bubble-playground');
+        container.innerHTML = '';
+        
+        const positions = [
+            { top: '20px', left: '30px', rot: -2 },
+            { top: '40px', left: '420px', rot: 3 },
+            { top: '200px', left: '60px', rot: 1 },
+            { top: '220px', left: '480px', rot: -2 }
+        ];
+
+        initialReviews.forEach((r, idx) => {
+            const bubble = document.createElement('div');
+            const pos = positions[idx % positions.length];
+            const stars = "★".repeat(r.rating);
+
+            bubble.className = "speech-bubble bg-cream/95 border border-gold/30 rounded-3xl p-5 shadow-lg w-[280px] md:w-[320px] flex flex-col justify-between backdrop-blur-md";
+            bubble.style.top = pos.top;
+            bubble.style.left = pos.left;
+            bubble.style.transform = `rotate(${pos.rot}deg)`;
+
+            bubble.innerHTML = `
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-serif-title font-bold text-base text-espresso">${r.name}</span>
+                        <span class="text-gold text-xs tracking-wider">${stars}</span>
+                    </div>
+                    <p class="text-xs text-espresso/80 leading-relaxed font-light italic">"${r.comment}"</p>
+                </div>
+                <div class="mt-3 text-[10px] text-gold/80 text-right uppercase tracking-widest font-semibold">
+                    <i class="fa-solid fa-hand-pointer mr-1"></i> 拖動氣泡
+                </div>
+            `;
+
+            makeElementDraggable(bubble);
+            container.appendChild(bubble);
+        });
+    }
+
+    function makeElementDraggable(elmnt) {
+        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        elmnt.onmousedown = dragMouseDown;
+        elmnt.ontouchstart = dragTouchStart;
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            document.onmousemove = elementDrag;
+        }
+
+        function dragTouchStart(e) {
+            const touch = e.touches[0];
+            pos3 = touch.clientX;
+            pos4 = touch.clientY;
+            document.ontouchend = closeDragElement;
+            document.ontouchmove = elementTouchDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            elmnt.style.position = "absolute";
+        }
+
+        function elementTouchDrag(e) {
+            const touch = e.touches[0];
+            pos1 = pos3 - touch.clientX;
+            pos2 = pos4 - touch.clientY;
+            pos3 = touch.clientX;
+            pos4 = touch.clientY;
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            elmnt.style.position = "absolute";
+        }
+
+        function closeDragElement() {
+            document.onmouseup = null;
+            document.onmousemove = null;
+            document.ontouchend = null;
+            document.ontouchmove = null;
+        }
+    }
+
+    function handleReviewSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('review-name').value;
+        const rating = parseInt(document.getElementById('review-rating').value);
+        const comment = document.getElementById('review-comment').value;
+
+        initialReviews.unshift({ name, rating, comment });
+        renderDraggableBubbles();
+        document.getElementById('review-form').reset();
+        showToast('感謝您的寶貴評價！對話氣泡已新增於上方。', 'success');
+    }
+
+    function renderGallery(filter = 'all') {
+        const container = document.getElementById('gallery-grid');
+        container.innerHTML = '';
+        activeGalleryItems = filter === 'all' ? galleryData : galleryData.filter(item => item.category === filter);
+
+        activeGalleryItems.forEach((item, index) => {
+            const el = document.createElement('div');
+            el.className = "relative h-72 rounded-3xl overflow-hidden shadow-md cursor-pointer group";
+            el.onclick = () => openLightbox(index);
+
+            el.innerHTML = `
+                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/600x600/596457/F4EFE6?text=Gallery'">
+                <div class="absolute inset-0 bg-espresso/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <span class="text-cream font-serif-title text-lg tracking-wide transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">${item.title}</span>
+                </div>
+            `;
+            container.appendChild(el);
+        });
+    }
+
+    function filterGallery(category, btn) {
+        document.querySelectorAll('.gallery-tag').forEach(b => {
+            b.classList.remove('text-gold', 'border-b-2', 'border-gold');
+            b.classList.add('text-espresso/60');
+        });
+        btn.classList.remove('text-espresso/60');
+        btn.classList.add('text-gold', 'border-b-2', 'border-gold');
+        renderGallery(category);
+    }
+
+    function openDishModal(dish) {
+        document.getElementById('modal-dish-img').src = dish.image;
+        document.getElementById('modal-dish-category').textContent = dish.category.toUpperCase();
+        document.getElementById('modal-dish-zh').textContent = dish.zhName;
+        document.getElementById('modal-dish-en').textContent = dish.enName;
+        document.getElementById('modal-dish-desc').textContent = dish.desc;
+        document.getElementById('modal-dish-price').textContent = dish.price;
+        document.getElementById('modal-dish-rating').textContent = dish.rating;
+
+        const modal = document.getElementById('dish-modal');
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.querySelector('div').classList.remove('scale-95');
+    }
+
+    function closeDishModal() {
+        const modal = document.getElementById('dish-modal');
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        modal.querySelector('div').classList.add('scale-95');
+    }
+
+    function openLightbox(index) {
+        currentLightboxIndex = index;
+        updateLightboxContent();
+        const lb = document.getElementById('lightbox');
+        lb.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeLightbox() {
+        const lb = document.getElementById('lightbox');
+        lb.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function navigateLightbox(direction) {
+        currentLightboxIndex = (currentLightboxIndex + direction + activeGalleryItems.length) % activeGalleryItems.length;
+        updateLightboxContent();
+    }
+
+    function updateLightboxContent() {
+        const item = activeGalleryItems[currentLightboxIndex];
+        document.getElementById('lightbox-img').src = item.image;
+        document.getElementById('lightbox-caption').textContent = item.title;
+    }
+
+    function handleNavClick(e, targetId) {
+        e.preventDefault();
+        const target = document.getElementById(targetId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+        }
+    }
+
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    }
+
+    function handleInputChange(e) {
+        if (e.target.value.trim() !== '') {
+            e.target.classList.remove('border-red-400');
+            e.target.classList.add('border-gold/30');
+        }
+    }
+
+    function handleReservationSubmit(e) {
+        e.preventDefault();
+        const date = document.getElementById('res-date').value;
+        const name = document.getElementById('res-name').value;
+        const phone = document.getElementById('res-phone').value;
+
+        if (!date || !name || !phone) {
+            showToast('請完整填寫所有必填欄位！', 'error');
+            return;
+        }
+
+        const formData = new FormData(e.target);
+        fetch('/', {
+            method: 'POST',
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString()
+        }).then(() => {
+            showToast(`感謝 ${name} 先生/小姐！您的席位已預約成功（示範預約已送出）。`, 'success');
+            e.target.reset();
+        }).catch(() => {
+            showToast(`預約表單已送出成功！我們將盡快與您聯繫確認。`, 'success');
+            e.target.reset();
+        });
+    }
+
+    function showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = `px-6 py-3 rounded-2xl shadow-xl text-xs font-semibold tracking-wider text-cream transition-all duration-300 transform translate-y-4 opacity-0 ${type === 'success' ? 'bg-olive' : 'bg-red-800'}`;
+        toast.textContent = message;
+        container.appendChild(toast);
+
+        setTimeout(() => { toast.classList.remove('translate-y-4', 'opacity-0'); }, 50);
+        setTimeout(() => {
+            toast.classList.add('translate-y-4', 'opacity-0');
+            setTimeout(() => toast.remove(), 300);
+        }, 4000);
+    }
+
+    function setupScrollAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+    }
+
+    window.onload = function() {
+        const dateInput = document.getElementById('res-date');
+        if (dateInput) {
+            const today = new Date();
+            const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+                .toISOString().slice(0, 10);
+            dateInput.min = localToday;
+        }
+        renderMenu('all');
+        renderGallery('all');
+        renderDraggableBubbles();
+        setupScrollAnimations();
+    };
+</script>
+
+</body>
+</html>
